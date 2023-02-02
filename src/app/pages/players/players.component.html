@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="input-group rounded">
+    <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" (input)="search($event)"/>
+    <span class="input-group-text border-0" id="search-addon">
+      <i class="fas fa-search"></i>
+    </span>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th scope="col">
+          <div class="colonne">
+            <div style="width: 100%; text-align: initial;">PSEUDO</div>
+          </div>
+        </th>
+        <th scope="col">
+          <div class="colonne">
+            <div style="width: 100%; text-align: initial;">NUMBER OF GAMES</div>
+          </div>
+        </th>
+        <th scope="col">
+          <div class="colonne">
+            <div style="width: 100%; text-align: initial;">MOST PLAYED LEADERS</div>
+          </div>
+        </th>
+      </tr>
+    </thead>
+    <tbody> 
+      <ng-container *ngFor="let player of players | paginate: {itemsPerPage: itemsPerPage, totalItems: totalItems,currentPage: page}">
+      <tr>
+        <td><a [routerLink]="['/player', player.steamId]">{{ player.pseudo }}</a></td>
+        <td>{{ player.gameCount }}</td>
+        <td><div class="image-centered" [innerHTML]="mostPlayedCiv(player)"></div></td>
+      </tr>
+      </ng-container>
+    </tbody>
+  </table>
+
+  <div class="d-flex justify-content-center">
+    <pagination-controls
+    class="waves-effect waves-light btn"
+    previousLabel="Prev"
+    nextLabel="Next"
+    (pageChange)="pageChangeEvent($event)">
+    </pagination-controls>
+  </div>
+</div>

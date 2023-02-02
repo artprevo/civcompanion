@@ -1,0 +1,35 @@
+.container-fluid {
+  color: white;
+}
+
+.btn:focus {
+  box-shadow: none;
+  text-decoration: none;
+}
+
+.btn {
+  text-decoration: none;
+}
+
+.btn:hover {
+  text-decoration: none;
+}
+
+.leader-img{
+  height:40px;
+}
+
+.image-centered { 
+    display: flex;
+    align-items:center;
+}
+
+.missing-icon{
+  height:20px;
+  cursor: pointer;
+}
+
+
+a:hover{
+  color: white;
+}

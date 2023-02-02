@@ -1,0 +1,25 @@
+//@import '~bootstrap/scss/bootstrap';
+@import 'assets/general.scss';
+
+html { 
+  background-color: rgb(25, 32, 35);
+  background-image: linear-gradient(to right, rgb(26, 43, 62), rgb(20, 30, 48));
+  color: rgba(255, 255, 255, 0.87);
+  height: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: 'Penumbra', Arial, Helvetica, sans-serif;
+}
+
+@font-face {
+    font-family: Penumbra;
+    src: url(assets/fonts/Penumbra-HalfSerif-Std_35114.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: ZonaPro;
+  src: url(assets/fonts/Fontspring-DEMO-zonapro-thin.otf) format("truetype");
+}

@@ -1,0 +1,77 @@
+<div class="container">
+  <!-- <mat-tab-group>
+      <mat-tab label="PRO"></mat-tab>
+      <mat-tab label="CASUAL"></mat-tab>
+  </mat-tab-group> -->
+
+  <table>
+    <thead>
+      <tr>
+        <th scope="col">
+          <div class="colonne">
+            <div style="width: 100%; text-align: initial;">ID</div>
+          </div>
+        </th>
+        <th scope="col">
+          <div class="colonne">
+            <div style="width: 100%; text-align: initial;">MAP</div>
+          </div>
+        </th>
+        <th scope="col">
+          <div class="colonne">
+            <div style="width: 100%; text-align: initial;">MAP SIZE</div>
+          </div>
+        </th>
+        <th scope="col">
+          <div class="colonne">
+            <div style="width: 100%; text-align: initial;">FROM</div>
+          </div>
+        </th>
+        <th scope="col">
+          <div class="colonne">
+            <div style="width: 100%; text-align: initial;">TYPE</div>
+          </div>
+        </th>
+      </tr>
+    </thead>
+    <tbody> 
+      <ng-container *ngFor="let game of games | paginate: {itemsPerPage: itemsPerPage, totalItems: totalItems,currentPage: page}">
+        <tr (click)="toggleCollapse(game)">
+          <td>
+            <a [routerLink]="['/game', game.idGame]">{{ game.idGame }}</a>
+            <div style="position:relative; text-overflow: initial; display: block; margin-top: 1px;">
+              <div style="float: left;">
+                <span style="font-size:small">{{ game.timestamp * 1000 | date:'dd/MM/yyyy hh:mm' }}</span>
+              </div>
+            </div>
+          </td>
+          <td>{{ game.map }}</td>
+          <td>{{ this.cleanCivString(game.mapSize) }}</td>
+          <td *ngIf="game.gameFrom else fillMissing">{{ game.gameFrom }}</td>
+          <td *ngIf="game.gameFrom else fillMissing">{{ game.gameType }}</td>
+          <ng-template #fillMissing>
+            <td>
+              <a [routerLink]="['/postGame', game.idGame]">
+                <img alt="missing" class="missing-icon" src="assets/icons/missing.png"/>
+              </a>
+            </td>
+          </ng-template>
+        </tr>
+        <tr *ngIf=checkCollapse(game)>
+          <td colspan="12" class="hiddenRow">
+            <app-gameResume class="gameResume" [game]=game></app-gameResume>
+          </td>
+        </tr>
+      </ng-container>
+    </tbody>
+  </table>
+
+  <div class="d-flex justify-content-center">
+    <pagination-controls
+    class="waves-effect waves-light btn"
+    previousLabel="Prev"
+    nextLabel="Next"
+    (pageChange)="pageChangeEvent($event)">
+    </pagination-controls>
+  </div>
+</div>

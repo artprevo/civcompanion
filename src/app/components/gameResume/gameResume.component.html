@@ -1,0 +1,19 @@
+<div ng-if=game>
+  <table class="table table-striped">
+    <tbody>
+      <ng-container *ngFor="let team of teams; let index = index; ">
+        <tr>
+          <td> Team {{index+1}}
+          <span *ngIf=checkWinning(index) >(Winner)</span>
+          </td>
+          <ng-container *ngFor="let player of team">
+            <td>
+              <img alt="{{player.leader}}" class="leader-img" src="assets/{{getLeaderImage(player.leader)}}.png"/>
+              <a [routerLink]="['/player', player.steamId]">{{ player.pseudo }}</a>
+            </td>
+          </ng-container>
+        </tr>
+      </ng-container>
+    </tbody>
+  </table>
+</div>

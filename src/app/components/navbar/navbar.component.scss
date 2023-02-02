@@ -1,0 +1,42 @@
+.container {
+  max-width: none !important;
+  align-items: center;
+  padding: 1em;
+}
+
+.navbar-menu {
+  line-height: 56px;
+}
+
+.navbar {
+  backdrop-filter: blur(16px);
+  box-shadow: rgb(0 0 0 / 23%) 2px 2px 3px -2px;
+  left: 0px;
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  z-index: 200;
+  background-color: rgba(19, 111, 149, 0.37) !important;
+  padding: 8px 16px !important;
+}
+.navbar-link.is-active {
+  color:rgba(19, 111, 149, 0.37);
+  background-color:white;
+}
+
+.navbar-item {
+  color: white;
+}
+
+a, a:link, a:visited {
+  color: white;
+  transition: color .4s linear;
+}
+
+a:hover, a:focus{
+  color: rgba(19, 111, 149, 0.37) !important;
+}
+
+.active-link {
+  color: black;
+}

@@ -1,0 +1,43 @@
+<div class="container">
+    <form [formGroup]="form">
+
+    <label for="gameFrom-select">From:</label>
+    <select class="browser-default" name="gameFrom" id="gameFrom-select" formControlName="gameFrom">
+        <option value=""></option>
+        <option value="CPL">CPL non competitive</option>
+        <option value="CivFR">CivFr non competitive(FFA, teamer, format squadron)</option>
+        <option value="Squadron">CivFr squadron</option>
+        <option value="CPL league">CPL league</option>
+        <option value="CWC">Civ World Cup (CWC)</option>
+    </select>
+
+    <br/>
+
+    <label>Winner:</label>
+    <table class="table table-condensed table-striped">
+      <thead>
+        <tr>
+            <th scope="col">Teams</th>
+        </tr>
+      </thead>
+      <tbody> 
+        <ng-container *ngFor="let team of this.teams; let index = index;">
+            <tr>
+                <td> <label><input type="radio" name="winningTeam" value="{{index}}" formControlName="winningTeam" checked /><span>Team {{index+1}}</span></label>
+                <ng-container *ngFor="let iPlayer of team">
+                    <td>
+                        <img alt="{{game.players[iPlayer].leader}}" class="leader-img" src="assets/{{getLeaderImage(game.players[iPlayer].leader)}}.png"/>
+                        {{ game.players[iPlayer].pseudo }}
+                    </td>
+                </ng-container>
+                </td>
+            </tr>
+        </ng-container>
+      </tbody>
+    </table>
+    </form>
+
+    <button
+        type="submit"
+        (click)="submitPostGame()">Confirm</button>
+</div>

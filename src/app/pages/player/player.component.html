@@ -1,0 +1,120 @@
+<div class="container">
+  <div *ngIf=player>
+    <mat-card>
+      <div class="card-player">
+        <div class="columns">
+          <div class="column adjust">
+            {{player.pseudo}}
+          </div>
+          <div class="column adjust">
+            {{player.gameCount}} games played
+          </div>
+          <div class="column">
+            <div class="columns">
+              <div class="column" *ngFor="let gameLeader of player.gamePerLeader">
+                <div class="image-centered leaders">
+                  <img alt="{{gameLeader.leader}}" class="leader-img" src="assets/{{getLeaderImage(gameLeader.leader)}}.png"/>
+                  <span> {{gameLeader.count}} </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>  
+      </div> 
+    </mat-card>
+  </div>
+  <hr>
+  <table>
+    <thead>
+      <tr>
+        <th scope="col">
+          <div class="colonne">
+            <div style="width: 100%; text-align: initial;">ID</div>
+          </div>
+        </th>
+        <th scope="col">
+          <div class="colonne">
+            <div style="width: 100%; text-align: initial;">MAP</div>
+          </div>
+        </th>
+        <th scope="col">
+          <div class="colonne">
+            <div style="width: 100%; text-align: initial;">FROM</div>
+          </div>
+        </th>
+        <th scope="col">
+          <div class="colonne">
+            <div style="width: 100%; text-align: initial;">TYPE</div>
+          </div>
+        </th>
+        <th scope="col">
+          <div class="colonne">
+            <div style="width: 100%; text-align: initial;">LEADER</div>
+          </div>
+        </th>
+        <th scope="col">
+          <div class="colonne">
+            <div style="width: 100%; text-align: initial;">RESULT</div>
+          </div>
+        </th>
+      </tr>
+    </thead>
+    <tbody> 
+      <ng-container *ngFor="let game of games | paginate: {itemsPerPage: itemsPerPage, totalItems: totalItems,currentPage: page}">
+      <tr (click)="toggleCollapse(game)">
+        <td>
+          <a [routerLink]="['/game', game.idGame]">{{ game.idGame }}</a>
+          <div style="position:relative; text-overflow: initial; display: block; margin-top: 1px;">
+            <div style="float: left;">
+              <span style="font-size:small">{{ game.timestamp * 1000 | date:'dd/MM/yyyy hh:mm' }}</span>
+            </div>
+          </div>
+        </td>
+        <td>{{ game.map }}</td>
+        <td>{{ game.gameFrom }}</td>
+        <td>{{ game.gameType }}</td>
+        <td>
+          <ng-container *ngFor="let playerGame of game.players">
+            <div *ngIf="playerGame.pseudo == player.pseudo">
+              <img alt="{{playerGame.leader}}" class="leader-img" src="assets/{{getLeaderImage(playerGame.leader)}}.png"/>
+            </div>
+          </ng-container>
+        </td>
+        <td>
+          <ng-container *ngIf="game.winningTeam == null; else winner">
+            <div style="color: yellow">
+              MISSING INFO
+            </div>
+          </ng-container>
+          <ng-template #winner>
+            <ng-container *ngIf="playerResult(game); else lost">
+              <div style="color: green">
+                WIN
+              </div>
+            </ng-container>
+          </ng-template>
+          <ng-template #lost>
+            <div style="color: red">
+              LOOSE
+            </div>
+          </ng-template>
+        </td>
+      </tr>
+
+      <tr *ngIf=checkCollapse(game)>
+        <td colspan="12" class="hiddenRow">
+          <app-gameResume class="gameResume" [game]=game></app-gameResume>
+        </td>
+      </tr>
+      </ng-container>
+    </tbody>
+  </table>
+
+  <div class="d-flex justify-content-center">
+    <pagination-controls
+    previousLabel="Prev"
+    nextLabel="Next"
+    (pageChange)="pageChangeEvent($event)">
+    </pagination-controls>
+  </div>
+</div>

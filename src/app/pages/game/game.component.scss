@@ -1,0 +1,92 @@
+legend {
+color: white;
+}
+
+table {
+    border-color: grey;
+    display: table;
+    text-indent: initial;
+    border-collapse: collapse;
+    border-spacing: 0;
+    border-radius: 3px;
+    width: 100%;
+    box-sizing: border-box;
+    table-layout: auto !important;
+    background-image: linear-gradient(to right, rgb(26, 43, 62), rgb(20, 30, 48));
+    overflow-x: hidden;
+}
+
+thead {
+    display: table-header-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+
+table thead tr {
+    background: linear-gradient(90deg, rgba(20, 255, 212, 0.09) 2%, rgba(46, 160, 214, 0.26) 27%, rgba(5, 181, 249, 0.04) 80%);
+}
+
+table thead {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+}
+
+table thead tr th {
+    color: white;
+}
+
+table tbody td {
+    font-family: 'ZenaPro', Arial, Helvetica, sans-serif;
+    color: white;
+}
+
+table th, table td {
+    vertical-align: middle;
+}
+
+th {
+    display: table-cell;
+    vertical-align: inherit;
+    font-weight: bold;
+    text-align: -internal-center;
+}
+
+div.container-inner {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 30px 6px 6px 6px;
+}
+
+.container {
+    display: block;
+    justify-content: space-between;
+}
+
+.colonne {
+    display: flex;
+    flex-direction: row;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: white !important;
+}
+
+input {
+    margin: .4rem;
+}
+
+[type="radio"]:not(:checked), [type="radio"]:checked {
+    position: relative;
+    opacity: 100%;
+    pointer-events: all;
+}
+
+.demo-chart {
+    
+}
+
+.gameIntro{
+    color:white;
+}

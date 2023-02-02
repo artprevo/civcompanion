@@ -1,0 +1,71 @@
+<div *ngIf=game class="container"> 
+	<div class="gameIntro">
+		Game {{game.idGame}} 
+      	<div *ngIf="game.gameFrom">
+          	FROM : {{game.gameFrom}}
+  		</div> 
+      	<div *ngIf="game.gameType">
+          	TYPE : {{game.gameType}}
+  		</div> 
+	    <a [routerLink]="['/postGame', game.idGame]">
+	        <img alt="missing" class="missing-icon" src="assets/icons/missing.png"/>
+	    </a>
+	</div>
+	<app-gameResume class="gameResume" [game]=this.game></app-gameResume>
+</div>
+
+<hr>
+
+<div echarts [options]="chartOption" class="demo-chart"></div>
+
+<fieldset>
+    <legend>Yield</legend>
+	<input type="radio" (change)="handleChange($event)" value="prodYield" name="graph" checked ngModel/> Production
+	<input type="radio" (change)="handleChange($event)" value="foodYield" name="graph" ngModel/> Food
+	<input type="radio" (change)="handleChange($event)" value="scienceYield" name="graph" ngModel/> Science
+	<input type="radio" (change)="handleChange($event)" value="cultureYield" name="graph" ngModel/> Culture
+	<input type="radio" (change)="handleChange($event)" value="goldYield" name="graph" ngModel/> Gold
+	<input type="radio" (change)="handleChange($event)" value="faithYield" name="graph" ngModel/> Faith
+</fieldset>
+
+<fieldset>
+    <legend>Dynamic Yield</legend>
+	<input type="radio" (change)="handleChange($event)" value="currentGold" name="graph" ngModel/> Gold
+	<input type="radio" (change)="handleChange($event)" value="currentFaith" name="graph" ngModel/> Faith
+	<input type="radio" (change)="handleChange($event)" value="maintenanceCost" name="graph" ngModel/> Gold maintenance
+</fieldset>
+
+<fieldset>
+    <legend>Total Yield</legend>
+	<input type="radio" (change)="handleChange($event)" value="prodTotal" name="graph" ngModel/> Production
+	<input type="radio" (change)="handleChange($event)" value="foodTotal" name="graph" ngModel/> Food
+	<input type="radio" (change)="handleChange($event)" value="scienceTotal" name="graph" ngModel/> Science
+	<input type="radio" (change)="handleChange($event)" value="cultureTotal" name="graph" ngModel/> Culture
+	<input type="radio" (change)="handleChange($event)" value="goldTotal" name="graph" ngModel/> Gold
+	<input type="radio" (change)="handleChange($event)" value="faithTotal" name="graph" ngModel/> Faith
+</fieldset>
+
+<fieldset>
+    <legend>Count</legend>
+	<input type="radio" (change)="handleChange($event)" value="cityCount" name="graph" ngModel/> Cities
+	<input type="radio" (change)="handleChange($event)" value="populationCount" name="graph" ngModel/> Population
+	<input type="radio" (change)="handleChange($event)" value="militaryStrength" name="graph" ngModel/> Military
+	<input type="radio" (change)="handleChange($event)" value="unitCount" name="graph" ngModel/> Units count
+	<input type="radio" (change)="handleChange($event)" value="unitLost" name="graph" ngModel/> Units lost
+
+</fieldset>
+
+<fieldset>
+    <legend>Victories</legend>
+	<input type="radio" (change)="handleChange($event)" value="diploFavor" name="graph" ngModel/> Diplomatic Favor
+	<input type="radio" (change)="handleChange($event)" value="diploPoint" name="graph" ngModel/> Diplomatic Point
+	<input type="radio" (change)="handleChange($event)" value="externalTourist" name="graph" ngModel/> External tourist
+	<input type="radio" (change)="handleChange($event)" value="internalTourist" name="graph" ngModel/> Internal tourist
+</fieldset>
+
+<fieldset>
+    <legend>Tech / Dogme / Wonder</legend>
+	<input type="radio" (change)="handleChange($event)" value="tech" name="graph" ngModel/> Tech
+	<input type="radio" (change)="handleChange($event)" value="dogme" name="graph" ngModel/> Dogme
+	<input type="radio" (change)="handleChange($event)" value="wonder" name="graph" ngModel/> Wonder
+</fieldset>
