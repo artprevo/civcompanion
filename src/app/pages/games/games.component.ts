@@ -7,11 +7,13 @@ import { RestService } from 'src/app/services/rest.service';
   styleUrls: ['./games.component.scss'],
 })
 export class GamesComponent implements OnInit {
-  games:any;
+
+  games: any[];
   page: number = 1;
-  totalItems : number = 11;
-  itemsPerPage : number = 10;
+  totalItems: number = 0;
+  itemsPerPage: number = 20;
   game : any = null;
+  loading: boolean = false;
 
   constructor(private service:RestService) { }
 
@@ -19,18 +21,28 @@ export class GamesComponent implements OnInit {
     this.getGames();
   }
   getGames(){
+    if (this.loading) {
+      return;
+    }
+    this.loading = true;
+
       this.service.getGames(this.page)
-        .subscribe(response => {
-          this.games = response;
+        .subscribe((response: any) => {
+          if (this.games) {
+            this.games = this.games.concat(response);
+          } else {
+            this.games = response;
+          }
+          this.totalItems = this.games.length + (this.page - 1) * this.itemsPerPage;
+          this.loading = false;
           this.totalItems = this.games.length + (this.page - 1) * this.itemsPerPage;
           this.games.forEach(game => {
             game.map = "Pangea"
           });
+          
+        },
+        error => {
         });
-  } 
-  pageChangeEvent(event: number){
-      this.page = event;
-      this.getGames();
   }
 
   toggleCollapse(game: any): void {
@@ -54,5 +66,12 @@ export class GamesComponent implements OnInit {
     if(!civString.length)
       return civString;
     return this.service.cleanCivString(civString);
+  }
+
+  onScroll() {
+    if (!this.loading) {
+      this.page++;
+      this.getGames();
+    }
   }
 }

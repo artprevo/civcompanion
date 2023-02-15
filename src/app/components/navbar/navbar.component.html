@@ -1,42 +1,12 @@
-<nav class="navbar" role="navigation" aria-label="main navigation">
-  <div class="navbar-brand">
-    <a class="navbar-item">
-      <img src="https://user-images.githubusercontent.com/3600593/43300671-1b0f0922-9193-11e8-98d0-73153daf40d1.png">
+<nav class="navbar is-dark has-shadow">
+  <div class="navbar-header">
+    <a routerLink="accueil" class="navbar-brand">
+      <img src="https://media.discordapp.net/attachments/940188685733871627/1075038453177258055/logo_02_alpha.png" width="75" height="75">
     </a>
   </div>
-
-  <div class="navbar-menu">
-    <div class="navbar-start">
-
-      <a class="navbar-item" routerLink="players" routerLinkActive="active-link">
-        Players
-      </a>
-
-      <!--
-      <a class="navbar-item" routerLink="teams" routerLinkActive="active-link">
-        Teams
-      </a>
-      -->
-
-      <a class="navbar-item" routerLink="games" routerLinkActive="active-link">
-        Games
-      </a>
-
-    </div>
-
-    <!--
-    <div class="navbar-end">
-      <div class="navbar-item">
-        <div class="buttons">
-          <a class="button is-danger">
-            <strong>Sign up</strong>
-          </a>
-          <a class="button is-light">
-            Log in
-          </a>
-        </div>
-      </div>
-    </div>
-    -->
-  </div>
+  <ul class="nav navbar-nav">
+    <li><a routerLink="players">Players</a></li>
+    <li><a routerLink="games">Games</a></li>
+    <li><a routerLink="players">Ladder</a></li>
+  </ul>
 </nav>

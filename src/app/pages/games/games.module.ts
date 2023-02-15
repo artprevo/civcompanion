@@ -5,6 +5,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import {MatTabsModule} from '@angular/material/tabs';
 import { GameResumeModule } from 'src/app/components/gameResume/gameResume.module';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { GameResumeModule } from 'src/app/components/gameResume/gameResume.modul
     CommonModule,
     NgxPaginationModule,
     MatTabsModule,
-    GameResumeModule
+    GameResumeModule,
+    InfiniteScrollModule
   ]
 })
 export class GamesModule { }

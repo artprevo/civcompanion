@@ -20,52 +20,110 @@
 
 <fieldset>
     <legend>Yield</legend>
-	<input type="radio" (change)="handleChange($event)" value="prodYield" name="graph" checked ngModel/> Production
-	<input type="radio" (change)="handleChange($event)" value="foodYield" name="graph" ngModel/> Food
-	<input type="radio" (change)="handleChange($event)" value="scienceYield" name="graph" ngModel/> Science
-	<input type="radio" (change)="handleChange($event)" value="cultureYield" name="graph" ngModel/> Culture
-	<input type="radio" (change)="handleChange($event)" value="goldYield" name="graph" ngModel/> Gold
-	<input type="radio" (change)="handleChange($event)" value="faithYield" name="graph" ngModel/> Faith
+	<div class="radio-group">
+		<input id="prodYield" type="radio" (change)="handleChange($event)" value="prodYield" name="graph" checked ngModel/>
+		<label for="prodYield">Production</label>
+
+		<input id="foodYield" type="radio" (change)="handleChange($event)" value="foodYield" name="graph" ngModel/>
+		<label for="foodYield">Food</label>
+
+		<input id="scienceYield" type="radio" (change)="handleChange($event)" value="scienceYield" name="graph" ngModel/>
+		<label for="scienceYield">Science</label>
+
+		<input id="cultureYield" type="radio" (change)="handleChange($event)" value="cultureYield" name="graph" ngModel/>
+		<label for="cultureYield">Culture</label>
+
+		<input id="goldYield" type="radio" (change)="handleChange($event)" value="goldYield" name="graph" ngModel/>
+		<label for="goldYield">Gold</label>
+
+		<input id="faithYield" type="radio" (change)="handleChange($event)" value="faithYield" name="graph" ngModel/>
+		<label for="faithYield">Faith</label>
+	</div>
 </fieldset>
 
 <fieldset>
     <legend>Dynamic Yield</legend>
-	<input type="radio" (change)="handleChange($event)" value="currentGold" name="graph" ngModel/> Gold
-	<input type="radio" (change)="handleChange($event)" value="currentFaith" name="graph" ngModel/> Faith
-	<input type="radio" (change)="handleChange($event)" value="maintenanceCost" name="graph" ngModel/> Gold maintenance
+	<div class="radio-group">
+		<input id="currentGold" type="radio" (change)="handleChange($event)" value="currentGold" name="graph" ngModel/>
+		<label for="currentGold">Gold</label>
+
+		<input id="currentFaith" type="radio" (change)="handleChange($event)" value="currentFaith" name="graph" ngModel/>
+		<label for="currentFaith">Faith</label>
+
+		<input id="maintenanceCost" type="radio" (change)="handleChange($event)" value="maintenanceCost" name="graph" ngModel/>
+		<label for="maintenanceCost">Gold maintenance</label>
+	</div>
 </fieldset>
 
 <fieldset>
     <legend>Total Yield</legend>
-	<input type="radio" (change)="handleChange($event)" value="prodTotal" name="graph" ngModel/> Production
-	<input type="radio" (change)="handleChange($event)" value="foodTotal" name="graph" ngModel/> Food
-	<input type="radio" (change)="handleChange($event)" value="scienceTotal" name="graph" ngModel/> Science
-	<input type="radio" (change)="handleChange($event)" value="cultureTotal" name="graph" ngModel/> Culture
-	<input type="radio" (change)="handleChange($event)" value="goldTotal" name="graph" ngModel/> Gold
-	<input type="radio" (change)="handleChange($event)" value="faithTotal" name="graph" ngModel/> Faith
-</fieldset>
+	<div class="radio-group">
+		<input id="prodTotal" type="radio" (change)="handleChange($event)" value="prodTotal" name="graph" ngModel/>
+		<label for="prodTotal">Production</label>
 
-<fieldset>
-    <legend>Count</legend>
-	<input type="radio" (change)="handleChange($event)" value="cityCount" name="graph" ngModel/> Cities
-	<input type="radio" (change)="handleChange($event)" value="populationCount" name="graph" ngModel/> Population
-	<input type="radio" (change)="handleChange($event)" value="militaryStrength" name="graph" ngModel/> Military
-	<input type="radio" (change)="handleChange($event)" value="unitCount" name="graph" ngModel/> Units count
-	<input type="radio" (change)="handleChange($event)" value="unitLost" name="graph" ngModel/> Units lost
+		<input id="foodTotal" type="radio" (change)="handleChange($event)" value="foodTotal" name="graph" ngModel/>
+		<label for="foodTotal">Food</label>
 
+		<input id="scienceTotal" type="radio" (change)="handleChange($event)" value="scienceTotal" name="graph" ngModel/>
+		<label for="scienceTotal">Science</label>
+
+		<input id="cultureTotal" type="radio" (change)="handleChange($event)" value="cultureTotal" name="graph" ngModel/>
+		<label for="cultureTotal">Culture</label>
+
+		<input id="goldTotal" type="radio" (change)="handleChange($event)" value="goldTotal" name="graph" ngModel/>
+		<label for="goldTotal">Gold</label>
+
+		<input id="faithTotal" type="radio" (change)="handleChange($event)" value="faithTotal" name="graph" ngModel/>
+		<label for="faithTotal">Faith</label>
+</div>
 </fieldset>
 
 <fieldset>
     <legend>Victories</legend>
-	<input type="radio" (change)="handleChange($event)" value="diploFavor" name="graph" ngModel/> Diplomatic Favor
-	<input type="radio" (change)="handleChange($event)" value="diploPoint" name="graph" ngModel/> Diplomatic Point
-	<input type="radio" (change)="handleChange($event)" value="externalTourist" name="graph" ngModel/> External tourist
-	<input type="radio" (change)="handleChange($event)" value="internalTourist" name="graph" ngModel/> Internal tourist
+    <div class="radio-group">
+        <input id="diploFavor" type="radio" (change)="handleChange($event)" value="diploFavor" name="graph" ngModel/>
+        <label for="diploFavor">Diplomatic Favor</label>
+		
+		<input id="diploPoint" type="radio" (change)="handleChange($event)" value="diploPoint" name="graph" ngModel/>
+		<label for="diploPoint">Diplomatic Point</label>
+	
+		<input id="externalTourist" type="radio" (change)="handleChange($event)" value="externalTourist" name="graph" ngModel/>
+		<label for="externalTourist">External tourist</label>
+	
+		<input id="internalTourist" type="radio" (change)="handleChange($event)" value="internalTourist" name="graph" ngModel/>
+		<label for="internalTourist">Internal tourist</label>
+	</div>
 </fieldset>
 
 <fieldset>
     <legend>Tech / Dogme / Wonder</legend>
-	<input type="radio" (change)="handleChange($event)" value="tech" name="graph" ngModel/> Tech
-	<input type="radio" (change)="handleChange($event)" value="dogme" name="graph" ngModel/> Dogme
-	<input type="radio" (change)="handleChange($event)" value="wonder" name="graph" ngModel/> Wonder
+    <div class="radio-group">
+        <input id="tech" type="radio" (change)="handleChange($event)" value="tech" name="graph" ngModel/>
+        <label for="tech">Tech</label>
+
+		<input id="dogme" type="radio" (change)="handleChange($event)" value="dogme" name="graph" ngModel/>
+		<label for="dogme">Dogme</label>
+
+		<input id="wonder" type="radio" (change)="handleChange($event)" value="wonder" name="graph" ngModel/>
+		<label for="wonder">Wonder</label>
+	</div>
+</fieldset>
+<fieldset>
+    <legend>Count</legend>
+	<div class="radio-group">
+		<input id="cityCount" type="radio" (change)="handleChange($event)" value="cityCount" name="graph" ngModel/>
+		<label for="cityCount">Cities</label>
+
+		<input id="populationCount" type="radio" (change)="handleChange($event)" value="populationCount" name="graph" ngModel/>
+		<label for="populationCount">Population</label>
+
+		<input id="militaryStrength" type="radio" (change)="handleChange($event)" value="militaryStrength" name="graph" ngModel/>
+		<label for="militaryStrength">Military</label>
+
+		<input id="unitCount" type="radio" (change)="handleChange($event)" value="unitCount" name="graph" ngModel/>
+		<label for="unitCount">Units count</label>
+
+		<input id="unitLost" type="radio" (change)="handleChange($event)" value="unitLost" name="graph" ngModel/>
+		<label for="unitLost">Units lost</label>
+	</div>
 </fieldset>

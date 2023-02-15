@@ -8,13 +8,15 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./player.component.scss']
 })
 export class PlayerComponent implements OnInit {
-  player:any;
-  games:any;
+  games: any[];
   page: number = 1;
-  totalItems : number = 11;
-  itemsPerPage : number = 10;
+  totalItems: number = 0;
+  itemsPerPage: number = 20;
   game : any = null;
-  stats : any;
+  loading: boolean = false;
+  player:any;
+  stats: any;
+  steamId: any;
 
   constructor(private service:RestService, private route:ActivatedRoute) { }
 
@@ -27,9 +29,9 @@ export class PlayerComponent implements OnInit {
 
   init()
   {
-    const steamId = this.route.snapshot.paramMap.get('steamId')!;
+    this.steamId = this.route.snapshot.paramMap.get('steamId')!;
 
-    this.service.getPlayer(steamId)
+    this.service.getPlayer(this.steamId)
       .subscribe(response => {
         this.player = Object.values(response)[0];
       });
@@ -38,14 +40,26 @@ export class PlayerComponent implements OnInit {
   }
 
   getGames(){
-    const steamId = this.route.snapshot.paramMap.get('steamId')!;
+    if (this.loading) {
+      return;
+    }
+    this.loading = true;
 
-    this.service.getPlayerGames(steamId, this.page)
-      .subscribe(response => {
-        this.games = response;
+    this.service.getPlayerGames(this.steamId, this.page)
+      .subscribe((response: any) => {
+        if (this.games) {
+          this.games = this.games.concat(response);
+        } else {
+          this.games = response;
+        }
         this.totalItems = this.games.length + (this.page - 1) * this.itemsPerPage;
+        this.loading = false;
+        this.totalItems = this.games.length + (this.page - 1) * this.itemsPerPage;
+        this.games.forEach(game => {
+          game.map = "Pangea"
+        });
     });
-  } 
+  }
   
   pageChangeEvent(event: number){
       this.page = event;
@@ -84,6 +98,13 @@ export class PlayerComponent implements OnInit {
       }    
     }
     return game.winningTeam == team;
+  }
+
+  onScroll() {
+    if (!this.loading) {
+      this.page++;
+      this.getGames();
+    }
   }
 }
 

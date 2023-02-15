@@ -5,7 +5,10 @@
       <i class="fas fa-search"></i>
     </span>
   </div>
-  <table>
+  <table infinite-scroll
+  [infiniteScrollDistance]="2"
+  [infiniteScrollThrottle]="500"
+  (scrolled)="onScroll()">
     <thead>
       <tr>
         <th scope="col">
@@ -35,13 +38,4 @@
       </ng-container>
     </tbody>
   </table>
-
-  <div class="d-flex justify-content-center">
-    <pagination-controls
-    class="waves-effect waves-light btn"
-    previousLabel="Prev"
-    nextLabel="Next"
-    (pageChange)="pageChangeEvent($event)">
-    </pagination-controls>
-  </div>
 </div>

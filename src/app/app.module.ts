@@ -16,6 +16,8 @@ import { TourneysModule } from './pages/tourneys/tourneys.module';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { MatLegacyCardModule as MatCardModule } from '@angular/material/legacy-card';
 import { RouterModule } from '@angular/router';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { AccueilModule } from './pages/accueil/accueil/accueil.module';
 
 
 @NgModule({
@@ -38,6 +40,8 @@ import { RouterModule } from '@angular/router';
     HttpClientModule,
     MatCardModule,
     RouterModule,
+    InfiniteScrollModule,
+    AccueilModule,
     NgxEchartsModule.forRoot({
       echarts: () => import('echarts')
     })

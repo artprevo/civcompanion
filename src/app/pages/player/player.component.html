@@ -24,7 +24,11 @@
     </mat-card>
   </div>
   <hr>
-  <table>
+  <table
+  infinite-scroll
+  [infiniteScrollDistance]="2"
+  [infiniteScrollThrottle]="500"
+  (scrolled)="onScroll()">
     <thead>
       <tr>
         <th scope="col">
@@ -109,12 +113,4 @@
       </ng-container>
     </tbody>
   </table>
-
-  <div class="d-flex justify-content-center">
-    <pagination-controls
-    previousLabel="Prev"
-    nextLabel="Next"
-    (pageChange)="pageChangeEvent($event)">
-    </pagination-controls>
-  </div>
 </div>

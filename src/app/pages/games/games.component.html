@@ -1,10 +1,9 @@
 <div class="container">
-  <!-- <mat-tab-group>
-      <mat-tab label="PRO"></mat-tab>
-      <mat-tab label="CASUAL"></mat-tab>
-  </mat-tab-group> -->
-
-  <table>
+  <table
+  infinite-scroll
+  [infiniteScrollDistance]="2"
+  [infiniteScrollThrottle]="500"
+  (scrolled)="onScroll()">
     <thead>
       <tr>
         <th scope="col">
@@ -65,13 +64,4 @@
       </ng-container>
     </tbody>
   </table>
-
-  <div class="d-flex justify-content-center">
-    <pagination-controls
-    class="waves-effect waves-light btn"
-    previousLabel="Prev"
-    nextLabel="Next"
-    (pageChange)="pageChangeEvent($event)">
-    </pagination-controls>
-  </div>
 </div>

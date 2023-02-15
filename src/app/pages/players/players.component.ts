@@ -7,34 +7,49 @@ import { RestService } from 'src/app/services/rest.service';
   styleUrls: ['./players.component.scss']
 })
 export class PlayersComponent implements OnInit {
-  players:any;
+  players: any[] = [];
   page: number = 1;
-  totalItems : number = 11;
-  itemsPerPage : number = 10;
+  totalItems: number = 0;
+  itemsPerPage: number = 20;
   game : any = null;
   searchValue : string = "";
+  loading: boolean = false;
 
   constructor(private service:RestService) { }
 
   ngOnInit(): void {
     this.getPlayers();
   }
+
   getPlayers(){
-      this.service.getPlayers(this.page, this.searchValue)
-        .subscribe(
-          response => {
+    if (this.loading) {
+      return;
+    }
+    this.loading = true;
+
+    this.service.getPlayers(this.page, this.searchValue)
+      .subscribe(
+        (response: any) => {
+          if (this.searchValue) {
             this.players = response;
-            this.totalItems = this.players.length + (this.page - 1) * this.itemsPerPage;
-          },
-          error => {
-            this.players = [];
-            this.totalItems = 0;
+          } else if (this.players) {
+            this.players = this.players.concat(response);
+          } else {
+            this.players = response;
           }
-        );
-  } 
-  pageChangeEvent(event: number){
-      this.page = event;
+          this.totalItems = this.players.length + (this.page - 1) * this.itemsPerPage;
+          this.loading = false;
+        },
+        error => {
+        }
+      );
+  }
+
+  onScroll() {
+    if (!this.loading) {
+      this.page++;
       this.getPlayers();
+    }
   }
 
   mostPlayedCiv(player: any):string 

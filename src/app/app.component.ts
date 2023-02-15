@@ -7,5 +7,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   imageUrl="./assets/background.jpg"
-  title = 'CivCompanion';
+  title = 'CivGG';
 }

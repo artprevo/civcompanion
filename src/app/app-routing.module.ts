@@ -8,6 +8,7 @@ import { TeamsComponent } from './pages/teams/teams.component';
 import { TourneysComponent } from './pages/tourneys/tourneys.component';
 import { GamesComponent } from './pages/games/games.component';
 import { PostGameComponent } from './pages/postGame/postGame.component';
+import { AccueilComponent } from './pages/accueil/accueil/accueil.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -15,6 +16,10 @@ const routes: Routes = [
     path: '',
     component: HomeComponent,
     children: [
+      {
+        path: 'accueil',
+        component: AccueilComponent,
+      },
       {
         path: 'players',
         component: PlayersComponent,
